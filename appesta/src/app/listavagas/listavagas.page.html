@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Lista de Vagas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item  *ngFor="let c of cliente">
+    <ion-thumbnail slot="start">
+      <img src="https://img.ibxk.com.br/2017/06/22/22100428046161.jpg">
+    </ion-thumbnail>
+    <ion-label>
+      <h1>Nome: {{c.nome}}</h1>
+      <h3>Email: {{c.email}}</h3>
+      <h3>Endereço: {{c.endereco}}</h3>
+      
+    </ion-label>
+    <ion-button expand="block" color="success" (click)="deleteCliente(c.id)">Deletar</ion-button>
+  </ion-item>
+
+</ion-content>

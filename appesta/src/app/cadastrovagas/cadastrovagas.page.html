@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Cadastro de Vagas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+
+    <ion-item> 
+     <ion-label position="floating" >N# Ticket</ion-label>
+     <ion-input type="text" name="numberticket"  placeholder="Digite o número do Ticket"></ion-input> 
+    </ion-item>
+    <ion-item> 
+        <ion-label position="floating">N# Vaga</ion-label>
+        <ion-input type="text" name="numbervaga" placeholder="Digite o número da Vaga" min="2" maxlenght="100"></ion-input> 
+       </ion-item>
+    <ion-item>
+       <ion-label position="floating">Placa</ion-label>
+       <ion-input type="text" name="placa" placeholder="Digite a Placa" min="2" maxlenght="100"></ion-input> 
+      </ion-item>
+    <ion-item>
+      <ion-label position="floating">Valor Pago:</ion-label>
+        <ion-input type="password" name="senha"placeholder="Digite o valor Pago" min="2" maxlenght="100"></ion-input> 
+       </ion-item>
+
+    <ion-item>
+      <ion-label>Hora de Entrada</ion-label>
+  <ion-datetime displayFormat="D MMM YYYY H:mm" min="2019" max="2019" value="2019-06-17T11:06Z"></ion-datetime>
+      </ion-item>
+    <ion-item>
+      <ion-label>Hora de Saída</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY H:mm" min="2019" max="2019" value="2019-06-17T11:06Z"></ion-datetime>
+    </ion-item>  
+    
+    <ion-button type='submit' expand="block" color="success">Cadastrar</ion-button>
+    <ion-button color="success" expand="block">Apagar</ion-button>
+  </form>
+</ion-content>
