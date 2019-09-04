@@ -4,7 +4,7 @@ export interface Vagas {
     numberticket:string,
     numbervaga:string,
     placa:string,
-    valorpago:string,
+    valorpago:number,
     entrada:string,
     saida:string
 }

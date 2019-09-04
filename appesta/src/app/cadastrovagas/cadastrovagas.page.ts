@@ -22,16 +22,21 @@ export class CadastrovagasPage implements OnInit {
 
     this.formVaga = this.formBuilder.group({
       numberticket:["",[
-        Validators.required
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(5)
       ]
     ],
     numbervaga:["",[
-      Validators.required
+      Validators.required,
+      Validators.maxLength(3)
     ]
   ],
 
     placa:["",[
-        Validators.required
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(8)
       ]
     ],
 
