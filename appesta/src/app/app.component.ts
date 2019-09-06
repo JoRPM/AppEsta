@@ -17,7 +17,7 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Cadastro de Vagas',
+      title: 'Registro de Vagas',
       url: '/cadastrovagas',
       icon: 'archive'
     },
