@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VagasService } from '../service/vagas.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Vagas } from '../models/vagas.model';
 
 @Component({
@@ -10,17 +10,23 @@ import { Vagas } from '../models/vagas.model';
   styleUrls: ['./cadastrovagas.page.scss'],
 })
 export class CadastrovagasPage implements OnInit {
-
+  
   formVaga: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private VagasService: VagasService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void{
 
     this.formVaga = this.formBuilder.group({
+      
+      id: ['',[
+
+      ]],
+      
       numberticket:["",[
         Validators.required,
         Validators.minLength(5),
@@ -55,26 +61,63 @@ export class CadastrovagasPage implements OnInit {
   ],
 
     
-    })
+    });
+
+    this.route.paramMap.subscribe(params => {
+      const vagaID =+ params.get('id');
+      if(vagaID) {
+        this.getVaga(vagaID);
+      }
+      });
   }
 
 
   adcvaga(){
 
     const novaVaga = this.formVaga.getRawValue() as Vagas;
-    console.log(novaVaga)
-    this.VagasService.addVaga(novaVaga)
-    .subscribe(
-      () => this.router.navigateByUrl(''),
-    )
-    
-    error =>{
-      console.log(error);
-      this.formVaga.reset();
+    if(novaVaga.id) {
+      this.VagasService.updateVaga(novaVaga)
+      .subscribe(
+        () => this.router.navigateByUrl('/listavagas'),
+        error =>{
+          console.log(error);
+          this.formVaga.reset();
+        }
+      );
+    } else {
+      this.VagasService.addVaga(novaVaga)
+      .subscribe(
+        () => this.router.navigateByUrl('/listavagas'),
+        error =>{
+          console.log(error);
+          this.formVaga.reset();
+        }
+      );
     }
   }
 
   resetar(){
     this.formVaga.reset();
   }
+
+  getVaga(id:number) {
+    this.VagasService.getVaga(id).subscribe(
+      (vagaDB: Vagas) => this.editVaga(vagaDB),
+      errorDB => console.log(errorDB)
+    );
+  }
+
+  editVaga(vagas: Vagas){
+    this.formVaga.patchValue({
+      numberticket: vagas.numberticket,
+      numbervaga: vagas.numbervaga,
+      placa: vagas.placa,
+      valorpago: vagas.valorpago,
+      entrada: vagas.entrada,
+      saida: vagas.saida,
+      id: vagas.id
+    });
+  }
+
+
 }

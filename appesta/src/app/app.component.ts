@@ -27,6 +27,7 @@ export class AppComponent {
       icon: 'list'
     }
     
+    
   ];
 
   constructor(

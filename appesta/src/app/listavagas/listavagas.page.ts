@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   templateUrl: './listavagas.page.html',
   styleUrls: ['./listavagas.page.scss'],
 })
-export class ListavagasPage implements OnInit {
+export class ListavagasPage{
 
   private vagas : Vagas[];
 
-  constructor(private vagasService:VagasService) { }
-  private router: Router;
-  ngOnInit() {
+  constructor(private vagasService:VagasService, private router: Router) { }
+  
+  ionViewWillEnter() {
 
     this.listaVaga();
   }
@@ -32,8 +32,8 @@ export class ListavagasPage implements OnInit {
         window.location.reload();
     }
 
-    atualizaVaga(id: number) {
-      this.router.navigateByUrl(`/listavaga`)
+    editVaga(id: number) {
+      this.router.navigate(['/edit', id]);
       }
 
 }

@@ -24,8 +24,8 @@ export class VagasService {
    return this.http.post(`${API_URL}/vaga`, vagas, httpOptions)
  }
 
-getVaga(numbervaga: string){
-  return this.http.get<Vagas>(`${API_URL}/vaga?numbervagavaga=${(numbervaga)}`, httpOptions);
+getVaga(id: number){
+  return this.http.get<Vagas>(`${API_URL}/vaga/${id}`, httpOptions);
 }
 
 getVagas(){
@@ -33,7 +33,7 @@ getVagas(){
 }
 
 updateVaga(vagas: Vagas){
-  return this.http.post<Vagas>(`${API_URL}/vaga`, vagas, httpOptions);
+  return this.http.put<Vagas>(`${API_URL}/vaga/${vagas.id}`, vagas, httpOptions);
 }
 
 deleteVaga(numbervaga: Vagas){

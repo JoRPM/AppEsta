@@ -15,8 +15,10 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
+  { path: 'listavagas', loadChildren: './listavagas/listavagas.module#ListavagasPageModule' },
   { path: 'cadastrovagas', loadChildren: './cadastrovagas/cadastrovagas.module#CadastrovagasPageModule' },
-  { path: 'listavagas', loadChildren: './listavagas/listavagas.module#ListavagasPageModule' }
+  { path: 'edit/:id', loadChildren: './cadastrovagas/cadastrovagas.module#CadastrovagasPageModule' }
+
 ];
 
 @NgModule({
