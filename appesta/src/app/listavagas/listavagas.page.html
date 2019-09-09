@@ -19,9 +19,9 @@
       <h2>N# Vaga: {{v.numbervaga}}</h2>
       <h3>N# Ticket: {{v.numberticket}}</h3>
       <h3>Placa: {{v.placa}}</h3>
-      <h3>Valor Pago: {{v.valorpago}}</h3>
-      <h3>Entrada: {{v.entrada}}</h3>
-      <h3>Saída: {{v.saida}}</h3>
+      <h3>Valor Pago: R$ {{v.valorpago}}</h3>
+      <h3>Entrada: {{v.entrada | date: 'short'}}</h3>
+      <h3>Saída: {{v.saida | date: 'short'}}</h3>
       
     </ion-label>
     <ion-button expand="block" color="success" (click)="deleteVaga(v.id)">Deletar</ion-button>

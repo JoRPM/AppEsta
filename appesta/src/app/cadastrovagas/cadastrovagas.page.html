@@ -43,7 +43,7 @@
       <ion-datetime name="saida" formControlName="saida" displayFormat="D MM YYYY H:mm" min="2019" max="2019" value="2019-06-17T11:06Z"></ion-datetime>
     </ion-item>  
     
-    <ion-button type='submit' expand="block" color="success">Registrar</ion-button>
+    <ion-button type='submit' expand="block" color="success" [disabled]="formVaga.invalid">Registrar</ion-button>
     <ion-button color="success" expand="block" (click)="resetar()">Apagar</ion-button>
   </form>
 </ion-content>
